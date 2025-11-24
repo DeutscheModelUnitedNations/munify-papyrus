@@ -1,5 +1,4 @@
 import { abilityBuilder, countQuery, object, query } from "$api/rumble";
-import { isDMUNEmail } from "$api/services/isDMUNEmail";
 
 abilityBuilder.user.allow("read").when(({ oidc }) => {
   if (oidc?.user) {
@@ -11,7 +10,8 @@ abilityBuilder.user.allow("read").when(({ oidc }) => {
 
 abilityBuilder.user.allow("read").when(({ mustBeLoggedIn }) => {
   const user = mustBeLoggedIn();
-  if (user?.email && isDMUNEmail(user.email)) {
+  // TODO
+  if (user?.email) {
     return "allow";
   }
 });

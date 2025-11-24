@@ -7,7 +7,7 @@ import * as m from "$lib/paraglide/messages.js";
 		<i class="fa-duotone fa-podium ml-6 text-4xl"></i>
 	</div>
 	<div class="flex-1">
-		<a class="btn btn-ghost ml-4 text-xl" href="/">MUNify CHASE</a>
+		<a class="btn btn-ghost ml-4 text-xl" href="/">MUNify PAPYRUS</a>
 	</div>
 	<div class="flex-none">
 		<a class="btn btn-ghost" href="/app">

@@ -19,10 +19,10 @@ const schema = z.object({
     z.literal("test"),
   ]),
   // TODO
-  OTEL_SERVICE_NAME: z.string().default("MUNIFY-CHASE"),
-  OTEL_SERVICE_VERSION: z.optional(z.string()),
-  OTEL_ENDPOINT_URL: z.optional(z.string()),
-  OTEL_AUTHORIZATION_HEADER: z.optional(z.string()),
+  // OTEL_SERVICE_NAME: z.string().default("MUNIFY-PAPYRUS"),
+  // OTEL_SERVICE_VERSION: z.optional(z.string()),
+  // OTEL_ENDPOINT_URL: z.optional(z.string()),
+  // OTEL_AUTHORIZATION_HEADER: z.optional(z.string()),
 });
 
 export const configPrivate = getConfig({ schema, envSource: env });

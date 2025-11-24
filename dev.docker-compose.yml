@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17
-    container_name: postgres-dev-chase
+    container_name: postgres-dev-papyrus
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -14,14 +14,14 @@ services:
       retries: 5
       timeout: 5s
     volumes:
-      - chase-dev:/var/lib/postgresql/data
+      - papyrus-dev:/var/lib/postgresql/data
 
   # When using the mock server this can be helpful to paste into the form to create a valid token with claims etc.
   # {
   #  "email": "my@mail.com",
   #  "family_name": "Munify",
-  #  "given_name": "chase Jr.",
-  #  "preferred_username": "chaseuser_123",
+  #  "given_name": "papyrus Jr.",
+  #  "preferred_username": "papyrususer_123",
   #  "locale": "de",
   #  "urn:zitadel:iam:org:project:275671427955294244:roles": {"admin": {}}
   # }
@@ -58,4 +58,4 @@ services:
       - ./mock-oidc-landingpage.html:/static/mock-oidc-landingpage.html
 
 volumes:
-  chase-dev:
+  papyrus-dev:

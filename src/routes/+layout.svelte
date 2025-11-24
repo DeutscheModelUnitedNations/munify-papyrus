@@ -90,7 +90,7 @@ onMount(() => {
 </script>
 
 <svelte:head>
-	<title>MUNify CHASE</title>
+	<title>MUNify PAPYRUS</title>
 </svelte:head>
 
 {@render children()}

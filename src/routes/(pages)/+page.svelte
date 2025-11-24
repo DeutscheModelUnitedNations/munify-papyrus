@@ -27,11 +27,11 @@ onMount(() => (loading = false));
 			{#if $media.isTabletOrMobile}
 				<div class="flex h-40 w-full items-center justify-center bg-white">
 					<img
-						src="/logo/svg/chase_logo_blue_text.svg"
+						src="/logo/svg/papyrus_logo_blue_text.svg"
 						style="object-fit:contain"
 						width="300"
 						height="100"
-						alt="Chase Logo"
+						alt="Papyrus Logo"
 					/>
 				</div>
 			{/if}
@@ -52,7 +52,7 @@ onMount(() => (loading = false));
 				<TextSection title={m.homeContributeTitle()} text={m.homeContributeText()}>
 					<a
 						class="btn btn-primary mt-3"
-						href="https://github.com/DeutscheModelUnitedNations/munify-chase"
+						href="https://github.com/DeutscheModelUnitedNations/munify-papyrus"
 						target="_blank"
 					>
 						<i class="fas fa-code-branch mr-2"></i>
