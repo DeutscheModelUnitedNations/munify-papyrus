@@ -1,21 +1,40 @@
 <script lang="ts">
-import { onMount } from "svelte";
-import { m } from "$lib/paraglide/messages";
+  import { onMount } from "svelte";
+  import { m } from "$lib/paraglide/messages";
 
-import { media } from "$lib/utils/media.svelte";
-import CardSection from "./CardSection.svelte";
-import LandingHero from "./LandingHero.svelte";
-import TextSection from "./TextSection.svelte";
+  import { media } from "$lib/utils/media.svelte";
+  import CardSection from "./CardSection.svelte";
+  import LandingHero from "./LandingHero.svelte";
+  import TextSection from "./TextSection.svelte";
+  import { authenticatedUserPromise } from "$lib/api/auth.svelte";
+  import { client } from "$lib/api/rumbleClient/client";
 
-// Modal state
-const versionModalVisible = false;
+  const authenticatedUser = await authenticatedUserPromise();
 
-let loading = $state(true);
+  const users = client.query.users({
+    id: true,
+    email: true,
+  });
+  
+  $inspect($users)
 
-onMount(() => (loading = false));
+  // // Modal state
+  // const versionModalVisible = false;
+
+  // let loading = $state(true);
+
+  // onMount(() => (loading = false));
 </script>
 
-<div class="flex min-h-screen flex-col items-center">
+hi {authenticatedUser?.given_name}
+
+{#if $users}
+  {JSON.stringify($users)}
+{:else}
+  nothing
+{/if}
+
+<!-- <div class="flex min-h-screen flex-col items-center">
 	{#if loading}
 		<div class="absolute bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center">
 			<div class="loading loading-dots"></div>
@@ -62,4 +81,4 @@ onMount(() => (loading = false));
 			</div>
 		</div>
 	{/if}
-</div>
+</div> -->

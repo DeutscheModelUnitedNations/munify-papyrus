@@ -1,4 +1,11 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "home": "Home"
+  "home": "Home",
+  "imprintAndPrivacy": "Imprint &amp; Privacy Policy",
+  "aServiceBy": "A service from",
+  "allRightsReservedby": "All rights reserved by",
+  "version": "Version",
+  "sha": "SHA",
+  "login": "Login",
+  "logout": "Log out"
 }
