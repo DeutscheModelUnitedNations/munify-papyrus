@@ -12,9 +12,6 @@ const config = {
     alias: {
       $api: "src/api",
     },
-    experimental: {
-      remoteFunctions: true,
-    },
   },
   compilerOptions: {
     experimental: {

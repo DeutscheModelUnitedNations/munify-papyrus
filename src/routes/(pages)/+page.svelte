@@ -6,17 +6,25 @@
   import CardSection from "./CardSection.svelte";
   import LandingHero from "./LandingHero.svelte";
   import TextSection from "./TextSection.svelte";
-  import { authenticatedUserPromise } from "$lib/api/auth.svelte";
   import { client } from "$lib/api/rumbleClient/client";
 
-  const authenticatedUser = await authenticatedUserPromise();
+  const res = await client.query.me({
+    email: true,
+    family_name: true,
+    given_name: true,
+    locale: true,
+    phone: true,
+    preferred_username: true,
+    sub: true,
+  });
+  console.log(res);
 
-  const users = client.query.users({
+  const users = client.liveQuery.users({
     id: true,
     email: true,
   });
-  
-  $inspect($users)
+
+  $inspect($users);
 
   // // Modal state
   // const versionModalVisible = false;
@@ -25,8 +33,6 @@
 
   // onMount(() => (loading = false));
 </script>
-
-hi {authenticatedUser?.given_name}
 
 {#if $users}
   {JSON.stringify($users)}

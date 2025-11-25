@@ -1,5 +1,4 @@
 import type { RequestEvent } from "@sveltejs/kit";
-import { log } from "console";
 import { schemaBuilder } from "$api/rumble";
 
 export type AuthenticatedUserData = NonNullable<
@@ -22,8 +21,14 @@ schemaBuilder.queryFields((t) => {
             phone: t.exposeString("phone"),
           }),
         }),
-      nullable: false,
-      resolve: (_root, _args, context) => context.mustBeLoggedIn(),
+      resolve: (_root, _args, context) => {
+        try {
+          const user = context.mustBeLoggedIn();
+          return user;
+        } catch (e) {
+          return null;
+        }
+      },
     }),
   };
 });
