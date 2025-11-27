@@ -6,33 +6,39 @@
   import CardSection from "./CardSection.svelte";
   import LandingHero from "./LandingHero.svelte";
   import TextSection from "./TextSection.svelte";
-  import { authenticatedUserPromise } from "$lib/api/auth.svelte";
   import { client } from "$lib/api/rumbleClient/client";
 
-  const authenticatedUser = await authenticatedUserPromise();
+  // TODO: this could be a reuseable function
+  const authenticatedUser = await client.query.me({
+    email: true,
+    family_name: true,
+    given_name: true,
+    locale: true,
+    phone: true,
+    preferred_username: true,
+    sub: true,
+  });
 
-  const users = client.query.users({
+  const users = await client.liveQuery.users({
+    __args: {
+      where: {
+        email: {
+          eq: authenticatedUser.email,
+        },
+      },
+    },
     id: true,
     email: true,
+    givenName: true,
   });
   
-  $inspect($users)
-
-  // // Modal state
-  // const versionModalVisible = false;
-
-  // let loading = $state(true);
-
-  // onMount(() => (loading = false));
+  $inspect({ email: authenticatedUser.email });
+  $inspect({ users: $users });
 </script>
 
-hi {authenticatedUser?.given_name}
+hi {authenticatedUser?.email}
 
-{#if $users}
-  {JSON.stringify($users)}
-{:else}
-  nothing
-{/if}
+{JSON.stringify($users, null, 2)}
 
 <!-- <div class="flex min-h-screen flex-col items-center">
 	{#if loading}
